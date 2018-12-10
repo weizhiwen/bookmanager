@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cc.wenshixin.entity.Borrow" table="borrow" schema="bookmanagersystem">
+        <id name="brId">
+            <column name="br_id" sql-type="varchar(14)" length="14"/>
+        </id>
+        <!--对应的读者-->
+        <many-to-one name="user" column="us_id" class="cc.wenshixin.entity.User"></many-to-one>
+        <!--对应的图书-->
+        <many-to-one name="book" column="bk_id" class="cc.wenshixin.entity.Book"></many-to-one>
+        <property name="continueTime">
+            <column name="continue_time" sql-type="tinyint(1) unsigned" not-null="true"/>
+        </property>
+        <property name="dateOut">
+            <column name="date_out" sql-type="date"/>
+        </property>
+        <property name="dateReturnPlan">
+            <column name="date_return_plan" sql-type="date"/>
+        </property>
+        <property name="dateReturnFact">
+            <column name="date_return_fact" sql-type="date"/>
+        </property>
+        <property name="overDay">
+            <column name="over_day" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="overMoneyPlan">
+            <column name="over_money_plan" sql-type="float" precision="-1"/>
+        </property>
+        <property name="overMoneyFact">
+            <column name="over_money_fact" sql-type="float" precision="-1"/>
+        </property>
+        <property name="hasReturn">
+            <column name="has_return" sql-type="char(1)" length="1" not-null="true"/>
+        </property>
+        <property name="operatorLend">
+            <column name="operator_lend" sql-type="varchar(10)" length="10"/>
+        </property>
+        <property name="operatorReturn">
+            <column name="operator_return" sql-type="varchar(10)" length="10"/>
+        </property>
+    </class>
+</hibernate-mapping>

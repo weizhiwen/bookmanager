@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="bookAction" class="cc.wenshixin.action.BookAction" scope="prototype">
+        <property name="bookService" ref="bookService"></property>
+    </bean>
+    <bean id="bookService" class="cc.wenshixin.service.BookService">
+        <property name="bookDao" ref="bookDaoImpl"></property>
+    </bean>
+    <bean id="bookDaoImpl" class="cc.wenshixin.dao.BookDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+</beans>

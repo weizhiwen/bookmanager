@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cc.wenshixin.entity.Book" table="book" schema="bookmanagersystem">
+        <id name="bkId">
+            <column name="bk_id" sql-type="int(11) unsigned"/>
+        </id>
+        <property name="bkCode">
+            <column name="bk_code" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="bkName">
+            <column name="bk_name" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="bkAuthor">
+            <column name="bk_author" sql-type="varchar(30)" length="30"/>
+        </property>
+        <property name="bkPress">
+            <column name="bk_press" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="bkDatePress">
+            <column name="bk_date_press" sql-type="date" not-null="true"/>
+        </property>
+        <property name="bkIsbn">
+            <column name="bk_isbn" sql-type="varchar(15)" length="15" not-null="true"/>
+        </property>
+        <property name="bkCatalog">
+            <column name="bk_catalog" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+        <property name="bkLanguage">
+            <column name="bk_language" sql-type="tinyint(1) unsigned" not-null="true"/>
+        </property>
+        <property name="bkPages">
+            <column name="bk_pages" sql-type="int(11) unsigned" not-null="true"/>
+        </property>
+        <property name="bkPrice">
+            <column name="bk_price" sql-type="float" precision="-1" not-null="true"/>
+        </property>
+        <property name="bkDateIn">
+            <column name="bk_date_in" sql-type="date" not-null="true"/>
+        </property>
+        <property name="bkBrief">
+            <column name="bk_brief" sql-type="tinytext" not-null="true"/>
+        </property>
+        <property name="bkCover">
+            <column name="bk_cover" sql-type="blob"/>
+        </property>
+        <property name="bkStatus">
+            <column name="bk_status" sql-type="varchar(2)" length="2"/>
+        </property>
+        <!--借阅记录设置-->
+        <set name="setBorrow" cascade="save-update" batch-size="10" inverse="true">
+            <key column="bk_id"></key>
+            <one-to-many class="cc.wenshixin.entity.Borrow"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

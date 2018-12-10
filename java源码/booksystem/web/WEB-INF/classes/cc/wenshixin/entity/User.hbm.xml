@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cc.wenshixin.entity.User" table="user" schema="bookmanagersystem">
+        <id name="usId">
+            <column name="us_id" sql-type="char(9)" length="9"/>
+        </id>
+        <property name="usName">
+            <column name="us_name" sql-type="varchar(10)" length="10"/>
+        </property>
+        <property name="usPassword">
+            <column name="us_password" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="usSex">
+            <column name="us_sex" sql-type="char(1)" length="1" not-null="true"/>
+        </property>
+        <!--读者类型设置-->
+        <many-to-one name="rdType" column="us_type" class="cc.wenshixin.entity.RdType"></many-to-one>
+        <property name="usDepartment">
+            <column name="us_department" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="usPhone">
+            <column name="us_phone" sql-type="char(11)" length="11" not-null="true"/>
+        </property>
+        <property name="usEmail">
+            <column name="us_email" sql-type="varchar(25)" length="25" not-null="true"/>
+        </property>
+        <property name="usDateRegister">
+            <column name="us_date_register" sql-type="date"/>
+        </property>
+        <property name="usPhoto">
+            <column name="us_photo" sql-type="blob"/>
+        </property>
+        <property name="usStatus">
+            <column name="us_status" sql-type="char(2)" length="2"/>
+        </property>
+        <property name="usBorrowCount">
+            <column name="us_borrow_count" sql-type="tinyint(1)"/>
+        </property>
+        <!--角色管理设置-->
+        <many-to-one name="adRole" class="cc.wenshixin.entity.AdRole" column="us_admin_role"></many-to-one>
+        <!--借阅记录设置-->
+        <set name="setBorrow" cascade="save-update" batch-size="10" inverse="true">
+            <key column="us_id"></key>
+            <one-to-many class="cc.wenshixin.entity.Borrow"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- 设置上传文件的大小限制为 64k，出错时返回input结果 -->
+    <constant name="struts.multipart.maxSize" value="64768"></constant>
+    <package name="user" extends="struts-default" namespace="/">
+        <action name="user_*" class="userAction" method="{1}">
+            <result name="loginSuccess">/system/index.jsp</result>
+            <result name="loginFail">/index.jsp</result>
+            <result name="loginOut">/index.jsp</result>
+            <result name="toAddPage">/system/reader/add.jsp</result>
+            <result name="toAddAdminPage">/system/admin/add.jsp</result>
+            <result name="add" type="redirectAction">user_list</result>
+            <result name="addAdmin" type="redirectAction">user_listAdmin</result>
+            <result name="input">/system/util/fail.jsp</result>
+            <result name="list">/system/reader/list.jsp</result>
+            <result name="listAdmin">/system/admin/list.jsp</result>
+            <result name="toEditPage">/system/reader/edit.jsp</result>
+            <result name="toEditAdminPage">/system/admin/edit.jsp</result>
+            <result name="edit" type="redirectAction">user_list</result>
+            <result name="editAdmin" type="redirectAction">user_listAdmin</result>
+            <result name="delete" type="redirectAction">user_list</result>
+            <result name="deleteAdmin" type="redirectAction">user_listAdmin</result>
+            <result name="toInfoPage">/system/person/info.jsp</result>
+            <result name="toChangePasswordPage">/system/person/change.jsp</result>
+            <result name="changeFail">/system/person/change.jsp</result>
+            <result name="changeSuccess">/index.jsp</result>
+        </action>
+    </package>
+</struts>

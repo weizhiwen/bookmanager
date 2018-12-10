@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- 设置上传文件的大小 2M，出错时返回input结果 -->
+    <constant name="struts.multipart.maxSize" value="2097152"></constant>
+    <package name="book" extends="struts-default" namespace="/">
+        <action name="book_*" class="bookAction" method="{1}">
+            <result name="toAddPage">/system/book/add.jsp</result>
+            <result name="add" type="redirectAction">book_list</result>
+            <result name="input">/system/util/fail.jsp</result>
+            <result name="list">/system/book/list.jsp</result>
+            <result name="toEditPage">/system/book/edit.jsp</result>
+            <result name="edit" type="redirectAction">book_list</result>
+            <result name="delete" type="redirectAction">book_list</result>
+        </action>
+    </package>
+</struts>

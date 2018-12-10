@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="borrowAction" class="cc.wenshixin.action.BorrowAction" scope="prototype">
+        <property name="borrowService" ref="borrowService"></property>
+        <property name="userService" ref="userService"></property>
+        <property name="bookService" ref="bookService"></property>
+    </bean>
+    <bean id="borrowService" class="cc.wenshixin.service.BorrowService">
+        <property name="borrowDao" ref="borrowDaoImpl"></property>
+        <property name="userDao" ref="userDaoImpl"></property>
+        <property name="bookDao" ref="bookDaoImpl"></property>
+    </bean>
+    <bean id="borrowDaoImpl" class="cc.wenshixin.dao.BorrowDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+</beans>

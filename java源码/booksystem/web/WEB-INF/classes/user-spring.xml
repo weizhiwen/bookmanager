@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="userAction" class="cc.wenshixin.action.UserAction" scope="prototype">
+        <property name="userService" ref="userService"></property>
+        <property name="rdTypeService" ref="rdTypeService"></property>
+        <property name="adRoleService" ref="adRoleService"></property>
+    </bean>
+    <bean id="userService" class="cc.wenshixin.service.UserService">
+        <property name="userDao" ref="userDaoImpl"></property>
+    </bean>
+    <bean id="userDaoImpl" class="cc.wenshixin.dao.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+</beans>

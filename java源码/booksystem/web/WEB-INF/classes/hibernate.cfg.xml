@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+      <!-- hibernate配置 -->
+      <property name="show_sql">true</property>
+      <property name="format_sql">true</property>
+      <property name="hbm2ddl.auto">update</property>
+      <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+      <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+      <!-- 引入映射文件 -->
+      <mapping resource="cc/wenshixin/entity/AdRole.hbm.xml"/>
+      <mapping resource="cc/wenshixin/entity/Borrow.hbm.xml"/>
+      <mapping resource="cc/wenshixin/entity/Book.hbm.xml"/>
+      <mapping resource="cc/wenshixin/entity/RdType.hbm.xml"/>
+      <mapping resource="cc/wenshixin/entity/User.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

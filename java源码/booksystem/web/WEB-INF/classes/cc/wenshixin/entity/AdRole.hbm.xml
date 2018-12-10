@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cc.wenshixin.entity.AdRole" table="ad_role" schema="bookmanagersystem">
+        <id name="adRoleId">
+            <column name="ad_role_id" sql-type="tinyint(1) unsigned"/>
+        </id>
+        <property name="adRoleName">
+            <column name="ad_role_name" sql-type="varchar(20)" length="20"/>
+        </property>
+        <set name="setUser" cascade="save-update,delete" batch-size="10" inverse="true">
+            <key column="us_admin_role"></key>
+            <one-to-many class="cc.wenshixin.entity.User"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

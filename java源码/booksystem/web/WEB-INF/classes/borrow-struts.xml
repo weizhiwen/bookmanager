@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="borrow" extends="struts-default" namespace="/">
+        <action name="borrow_*" class="borrowAction" method="{1}">
+            <result name="toLendPage">/system/borrow/lend.jsp</result>
+            <result name="lendSuccess">/system/util/success.jsp</result>
+            <result name="toContinueLendPage">/system/borrow/continue.jsp</result>
+            <result name="continueLendSuccess">/system/util/success.jsp</result>
+            <result name="continueLendFail">/system/borrow/continue.jsp</result>
+            <result name="lendFail">/system/util/fail.jsp</result>
+            <result name="toReturnBookPage">/system/borrow/return.jsp</result>
+            <result name="continueAndReturn">/system/borrow/continue.jsp</result>
+            <result name="userCondition">/system/borrow/continue.jsp</result>
+            <result name="returnBook">/system/util/success.jsp</result>
+            <result name="bookCondition">/system/borrow/list.jsp</result>
+            <result name="list">/system/borrow/list.jsp</result>
+            <result name="listNoReturn">/system/borrow/continue.jsp</result>
+        </action>
+    </package>
+</struts>

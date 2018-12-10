@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cc.wenshixin.entity.RdType" table="rd_type" schema="bookmanagersystem">
+        <id name="rdTypeId">
+            <column name="rd_type_id" sql-type="tinyint(1) unsigned"/>
+        </id>
+        <property name="rdTypeName">
+            <column name="rd_type_name" sql-type="varchar(10)" length="10"/>
+        </property>
+        <property name="canLendCount">
+            <column name="can_lend_count" sql-type="tinyint(1) unsigned"/>
+        </property>
+        <property name="canLendDay">
+            <column name="can_lend_day" sql-type="tinyint(1) unsigned"/>
+        </property>
+        <property name="canCountTime">
+            <column name="can_count_time" sql-type="tinyint(1) unsigned"/>
+        </property>
+        <property name="fineRate">
+            <column name="fine_rate" sql-type="float(3,2)" precision="3" scale="2"/>
+        </property>
+        <property name="dateValid">
+            <column name="date_valid" sql-type="tinyint(1) unsigned"/>
+        </property>
+        <set name="setUser" cascade="save-update,delete" batch-size="10" inverse="true">
+            <key column="us_type"></key>
+            <one-to-many class="cc.wenshixin.entity.User"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <package name="crm" extends="struts-default" namespace="/"></package>
+    <!-- 引入其他struts配置文件 -->
+    <include file="user-struts.xml"></include>
+    <include file="rdType-struts.xml"></include>
+    <include file="book-struts.xml"></include>
+    <include file="borrow-struts.xml"></include>
+</struts>

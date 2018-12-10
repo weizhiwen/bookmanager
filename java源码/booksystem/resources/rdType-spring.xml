@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="rdTypeAction" class="cc.wenshixin.action.RdTypeAction" scope="prototype">
+        <property name="rdTypeService" ref="rdTypeService"></property>
+    </bean>
+    <bean id="rdTypeService" class="cc.wenshixin.service.RdTypeService">
+        <property name="rdTypeDao" ref="rdTypeDaoImpl"></property>
+    </bean>
+    <bean id="rdTypeDaoImpl" class="cc.wenshixin.dao.RdTypeDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+</beans>
